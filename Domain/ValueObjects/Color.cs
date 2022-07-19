@@ -2,24 +2,24 @@ using Domain.Exceptions;
 
 namespace Domain.ValueObjects;
 
-public class Colour : ValueObject
+public class Color : ValueObject
 {
-    static Colour()
+    static Color()
     {
     }
 
-    private Colour()
+    private Color()
     {
     }
 
-    private Colour(string code)
+    private Color(string code)
     {
         Code = code;
     }
 
-    public static Colour From(string code)
+    public static Color From(string code)
     {
-        var colour = new Colour { Code = code };
+        var colour = new Color { Code = code };
 
         if (!SupportedColours.Contains(colour))
         {
@@ -29,30 +29,30 @@ public class Colour : ValueObject
         return colour;
     }
 
-    public static Colour White => new("#FFFFFF");
+    public static Color White => new("#FFFFFF");
 
-    public static Colour Red => new("#FF5733");
+    public static Color Red => new("#FF5733");
 
-    public static Colour Orange => new("#FFC300");
+    public static Color Orange => new("#FFC300");
 
-    public static Colour Yellow => new("#FFFF66");
+    public static Color Yellow => new("#FFFF66");
 
-    public static Colour Green => new("#CCFF99 ");
+    public static Color Green => new("#CCFF99 ");
 
-    public static Colour Blue => new("#6666FF");
+    public static Color Blue => new("#6666FF");
 
-    public static Colour Purple => new("#9966CC");
+    public static Color Purple => new("#9966CC");
 
-    public static Colour Grey => new("#999999");
+    public static Color Grey => new("#999999");
 
     public string Code { get; private set; } = "#000000";
 
-    public static implicit operator string(Colour colour)
+    public static implicit operator string(Color color)
     {
-        return colour.ToString();
+        return color.ToString();
     }
 
-    public static explicit operator Colour(string code)
+    public static explicit operator Color(string code)
     {
         return From(code);
     }
@@ -62,7 +62,7 @@ public class Colour : ValueObject
         return Code;
     }
 
-    protected static IEnumerable<Colour> SupportedColours
+    protected static IEnumerable<Color> SupportedColours
     {
         get
         {
