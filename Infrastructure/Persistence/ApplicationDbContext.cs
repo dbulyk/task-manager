@@ -1,3 +1,4 @@
+using System.Reflection;
 using Application.Interfaces;
 using Domain.Entities;
 using Duende.IdentityServer.EntityFramework.Options;
@@ -14,9 +15,15 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
         IOptions<OperationalStoreOptions> operationalStoreOptions)
         : base(options, operationalStoreOptions)
     {
-        
     }
 
     public DbSet<Status> Statuses => Set<Status>();
     public DbSet<Issue> Issues => Set<Issue>();
+    
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        base.OnModelCreating(builder);
+    }
 }
