@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Common\Behaviours" />
-      <Folder Include="Common\Exceptions" />
-      <Folder Include="Common\Interfaces" />
-      <Folder Include="Common\Models" />
-      <Folder Include="Common\Security" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>

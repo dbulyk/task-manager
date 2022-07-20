@@ -12,10 +12,10 @@ window.fetch = () => {
     {
       ok: true,
       json: () => Promise.resolve({
-        "authority": "https://localhost:7278",
+        "authority": "https://localhost:7109",
         "client_id": "WebUI",
-        "redirect_uri": "https://localhost:7278/authentication/login-callback",
-        "post_logout_redirect_uri": "https://localhost:7278/authentication/logout-callback",
+        "redirect_uri": "https://localhost:7109/authentication/login-callback",
+        "post_logout_redirect_uri": "https://localhost:7109/authentication/logout-callback",
         "response_type": "id_token token",
         "scope": "WebUIAPI openid profile"
      })
