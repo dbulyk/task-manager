@@ -10,4 +10,8 @@
       <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Exceptions" />
+    </ItemGroup>
+
 </Project>
