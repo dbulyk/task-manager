@@ -4,8 +4,9 @@ namespace Application.Interfaces;
 
 public interface IIssueService
 {
-    public Task<Task?> GetIssue(int id);
-    public Task<List<Task>> GetIssues();
-    public Task<Task?> CreateIssue(Issue issue);
-    public Task<Task?> UpdateIssue(int id, Issue issue);
+    public Task<Issue?> GetIssue(int id);
+    public Task<List<Issue>> GetIssues();
+    public Task<Issue?> CreateIssue(Issue issue);
+    public Task<Issue?> UpdateIssue(int id, Issue issue);
+    public Task<bool> DeleteIssue(int id);
 }
