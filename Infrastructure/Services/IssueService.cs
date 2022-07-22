@@ -42,9 +42,19 @@ public class IssueService : IIssueService
         return issue;
     }
 
-    public async Task<Issue> UpdateIssue(int id, Issue issue)
+    public async Task<Issue?> UpdateIssue(int id, Issue issue)
     {
-        throw new NotImplementedException();
+        var existingIssue = await _context.Issues.FirstOrDefaultAsync(i => i.Id == id);
+        if (existingIssue == null) return null;
+
+        //TODO посмотреть как правильно апдейтить сущности
+        existingIssue.Description = issue.Description;
+        existingIssue.Status = issue.Status;
+        existingIssue.ExecutorId = issue.ExecutorId;
+        existingIssue.Name = issue.Name;
+
+        await _context.SaveChangesAsync();
+        return existingIssue;
     }
 
     public async Task<bool> DeleteIssue(int id)

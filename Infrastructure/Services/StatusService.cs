@@ -41,9 +41,16 @@ public class StatusService : IStatusService
         return status;
     }
 
-    public Task<Status> UpdateStatus(int id, Status status)
+    public async Task<Status?> UpdateStatus(int id, Status status)
     {
-        throw new NotImplementedException();
+        var existingStatus = await _context.Statuses.FirstOrDefaultAsync(s => s.Id == id);
+        if (existingStatus == null) return null;
+
+        //TODO посмотреть как правильно апдейтить сущности
+        existingStatus.Name = status.Name;
+        
+        await _context.SaveChangesAsync();
+        return existingStatus;
     }
     
     public async Task<bool> DeleteStatus(int id)
@@ -59,7 +66,7 @@ public class StatusService : IStatusService
         _context.Statuses.Remove(status);
         await _context.SaveChangesAsync();
         
-        _logger.LogInformation("Создана статус с id {Id}", status.Id);
+        _logger.LogInformation("Создан статус с id {Id}", status.Id);
         return true;
     }
 }

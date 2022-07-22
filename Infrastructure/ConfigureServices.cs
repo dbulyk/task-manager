@@ -28,7 +28,7 @@ public static class ConfigureServices
             .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
         
         services.AddTransient<IIdentityService, IdentityService>();
-        
+
         services.AddAuthentication()
             .AddIdentityServerJwt();
 
